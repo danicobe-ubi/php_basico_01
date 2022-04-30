@@ -1,0 +1,4 @@
+1. Crear una variable con un texto como valor
+2. Usar crypt() para encriptar el texto
+3. Assignar el resultado de crypt() en otra variable
+4. mostrar la variable

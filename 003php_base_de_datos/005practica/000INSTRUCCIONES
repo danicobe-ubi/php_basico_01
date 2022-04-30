@@ -1,0 +1,4 @@
+Step 1 - Crear Base de datos
+Step 2 - Crear una Tabla para usuarios con las siguientes columnas (id, usuario, clave)
+Step 3 - En la base de datos insertar 3 o mas filas
+Step 4 - Con PHP conectarse a la base de datos y mostrar la informacion
