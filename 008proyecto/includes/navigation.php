@@ -13,7 +13,7 @@
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
-                  <?php
+<?php
 $query = "SELECT * FROM categories";
 $select_categories = mysqli_query($connection, $query);
 
@@ -23,16 +23,16 @@ while ($row = mysqli_fetch_assoc($select_categories)) {
 }
 
 ?>
-                    <!-- <li>
-                        <a href="#">About</a>
-                    </li>
                     <li>
+                        <a href="admin">Admin</a>
+                    </li>
+                    <!-- <li>
                         <a href="#">Services</a>
                     </li>
                     <li>
                         <a href="#">Contact</a>
-                    </li> -->
-                </ul>
+                    </li>
+                </ul> -->
             </div>
             <!-- /.navbar-collapse -->
         </div>
