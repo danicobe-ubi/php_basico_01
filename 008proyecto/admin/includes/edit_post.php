@@ -45,6 +45,7 @@
 
     check_query($update_result);
     move_uploaded_file($post_image_temp, "../images/$post_image");
+    header("Location: posts.php");
   }
 ?>
 
@@ -63,7 +64,10 @@
         while ($category_row = mysqli_fetch_assoc($select_categories)) {
           $cat_id = $category_row['cat_id'];
           $cat_title = $category_row['cat_title'];
-          echo "<option value='$cat_id'>$cat_title</option>";
+          if($cat_id == $post_category_id)
+            echo "<option value='$cat_id' selected>$cat_title</option>";
+          else
+            echo "<option value='$cat_id'>$cat_title</option>";
         }
       ?>
     </select>

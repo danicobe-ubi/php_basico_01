@@ -5,7 +5,7 @@
     $post_category_id = $_POST['post_category_id'];
     $post_status = $_POST['post_status'];
     // en caso de archivos
-    // Para ovtener imagenes se debe utilizar la super global $_FILES
+    // Para obtener imagenes se debe utilizar la super global $_FILES
     $post_image = $_FILES['post_image']['name'];
     $post_image_temp = $_FILES['post_image']['tmp_name'];
 
@@ -13,11 +13,10 @@
     $post_content = $_POST['post_content'];
     
     $post_date = date('d-m-y');
-    $post_comment_count = 4;
 
     move_uploaded_file($post_image_temp, "../images/$post_image");
 
-    $query = "INSERT INTO posts(post_category_id, post_title, post_author, post_date, post_image, post_content, post_tags, post_comment_count, post_status) VALUES($post_category_id, '$post_title', '$post_author', '$post_date', '$post_image', '$post_content', '$post_tags', $post_comment_count, '$post_status')";
+    $query = "INSERT INTO posts(post_category_id, post_title, post_author, post_date, post_image, post_content, post_tags, post_status) VALUES($post_category_id, '$post_title', '$post_author', '$post_date', '$post_image', '$post_content', '$post_tags', '$post_status')";
 
     $result = mysqli_query($connection, $query);
     check_query($result);
@@ -32,8 +31,19 @@
     <input type="text" class="form-control" name="post_title" id="post_title">
   </div>
   <div class="form-group">
-    <label for="post_category">Post Categoria</label>
-    <input type="text" class="form-control" name="post_category_id" id="post_category">
+    <label for="post_category_id">Post Categoria</label>  
+    <select name="post_category_id" id="post_category_id">
+      <?php
+        $query_categories = "SELECT * FROM categories";
+        $select_categories = mysqli_query($connection, $query_categories);
+        check_query($select_categories);
+        while ($category_row = mysqli_fetch_assoc($select_categories)) {
+          $cat_id = $category_row['cat_id'];
+          $cat_title = $category_row['cat_title'];
+          echo "<option value='$cat_id'>$cat_title</option>";
+        }
+      ?>
+    </select>
   </div>
   <div class="form-group">
     <label for="post_author">Post Autor</label>

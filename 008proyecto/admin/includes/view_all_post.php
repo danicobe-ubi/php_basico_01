@@ -10,6 +10,8 @@
       <th>Etiquetas</th>
       <th>Commentarios</th>
       <th>Fecha</th>
+      <th>Edit</th>
+      <th>Delete</th>
     </tr>
   </thead>
   <tbody>
@@ -30,7 +32,12 @@
         echo "<td>$post_id</td>";
         echo "<td>$post_author</td>";
         echo "<td>$post_title</td>";
-        echo "<td>$post_category_id</td>";
+        $query_category = "SELECT * FROM categories WHERE cat_id = $post_category_id";
+        $result_category = mysqli_query($connection, $query_category);
+        while ($row = mysqli_fetch_assoc($result_category)) {
+          $cat_title = $row['cat_title'];
+        }
+        echo "<td>$cat_title</td>";
         echo "<td>$post_status</td>";
         echo "<td><img class='img-responsive' width='100' src='../images/$post_image'/></td>";
         echo "<td>$post_tags</td>";
