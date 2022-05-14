@@ -46,4 +46,11 @@ function delete_category() {
     header("Location: categories.php");
   }
 }
+
+function check_query($result){
+  global $connection;
+  if(!$result){
+    die("Consulta Fallida " . mysqli_error($connection));
+  }
+}
 ?>
