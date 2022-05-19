@@ -26,11 +26,6 @@
             $post_content = $row['post_content'];
         ?>
 
-        <h1 class="page-header">
-            Page Heading
-            <small>Secondary Text</small>
-        </h1>
-
         <!-- First Blog Post -->
         <h2>
             <a href="#"><?php echo $post_title ?></a>
@@ -43,7 +38,6 @@
         <img class="img-responsive" src="images/<?php echo $post_image; ?>" alt="">
         <hr>
         <p><?php echo $post_content ?></p>
-        <a class="btn btn-primary" href="#">Read More <span class="glyphicon glyphicon-chevron-right"></span></a>
 
         <hr>
         <?php
@@ -56,15 +50,21 @@
             $comment_author = $_POST['comment_author'];
             $comment_content = $_POST['comment_content'];
             $comment_email = $_POST['comment_email'];
-            $query = "INSERT INTO comments(comment_post_id, comment_author, comment_email, comment_content, comment_status, comment_date) VALUES ($post_id, '$comment_author', '$comment_email', '$comment_content', 'no aprobado', now())";
-            $result_insert_comment = mysqli_query($connection, $query);
-            check_query($result_insert_comment);
-            // Para Actualizar contador de comentarios
-            $query = "UPDATE posts SET post_comment_count = post_comment_count + 1 WHERE post_id = $post_id";
-            $result_count_update = mysqli_query($connection, $query);
-            check_query($result_count_update);
-            // para refrescar la pagina
-            header("Location ''");
+
+            if(!empty($comment_author) && !empty($comment_content) && !empty($comment_email)) {
+              $query = "INSERT INTO comments(comment_post_id, comment_author, comment_email, comment_content, comment_status, comment_date) VALUES ($post_id, '$comment_author', '$comment_email', '$comment_content', 'no aprobado', now())";
+              $result_insert_comment = mysqli_query($connection, $query);
+              check_query($result_insert_comment);
+              // Para Actualizar contador de comentarios
+              $query = "UPDATE posts SET post_comment_count = post_comment_count + 1 WHERE post_id = $post_id";
+              $result_count_update = mysqli_query($connection, $query);
+              check_query($result_count_update);
+              // para refrescar la pagina
+              header("Location ''");
+            } else {
+              echo '<script>alert(\'los campos del comentario no deben ser vacios\')</script>';
+            }
+
           }
         ?>
         <!-- Comments Form -->

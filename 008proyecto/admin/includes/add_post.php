@@ -51,7 +51,11 @@
   </div>
   <div class="form-group">
     <label for="post_status">Post Estado</label>
-    <input type="text" class="form-control" name="post_status" id="post_status">
+    <select class="form-control" name="post_status" id="post_status">
+      <option selected disabled>Seleccionar</option>
+      <option value="borrador">borrador</option>
+      <option value="publicado">publicado</option>
+    </select>
   </div>
   <div class="form-group">
     <label for="post_image">Post Imagen</label>

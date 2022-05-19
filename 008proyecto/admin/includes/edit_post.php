@@ -78,7 +78,11 @@
   </div>
   <div class="form-group">
     <label for="post_status">Post Estado</label>
-    <input type="text" class="form-control" name="post_status" id="post_status" value="<?php echo $post_status; ?>">
+    <select class="form-control" name="post_status" id="post_status">
+      <option selected disabled>Seleccionar</option>
+      <option value="borrador" <?php echo $post_status == 'borrador' ? 'selected' : ''?>>borrador</option>
+      <option value="publicado" <?php echo $post_status == 'publicado' ? 'selected' : ''?>>publicado</option>
+    </select>
   </div>
   <div class="form-group">
     <img width="100" src="../images/<?php echo $post_image;?>" alt="">

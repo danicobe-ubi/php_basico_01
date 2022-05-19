@@ -20,7 +20,25 @@
   <?php
     $query = "SELECT * FROM categories";
     $select_categories = mysqli_query($connection, $query);
-  ?>
+    ?>
+
+  <div class="well">
+    <h4>Login</h4>
+    <form action="includes/login.php" method="POST">
+      <div class="form-group">
+        <input type="text" class="form-control" name="user_name" placeholder="Ingresar Usuario">
+      </div>
+      <div class="input-group">
+        <input type="password" class="form-control" name="user_password" placeholder="Ingresar Clave">
+        <span class="input-group-btn">
+          <button type="submit" class="btn btn-primary" name="login">
+            Submit
+          </button>
+        </span>
+      </div>
+    </form>
+    <!-- /.input-group -->
+  </div>
   <div class="well">
     <h4>Blog Categories</h4>
     <div class="row">
@@ -38,7 +56,6 @@
     </div>
     <!-- /.row -->
   </div>
-
   <!-- Side Widget Well -->
   <?php include "widget.php"?>
 
