@@ -1,3 +1,4 @@
+<?php session_start()?>
 <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
   <div class="container">
     <!-- Brand and toggle get grouped for better mobile display -->
@@ -21,10 +22,15 @@
           $cat_title = $row['cat_title'];
           echo "<li> <a href='#'>$cat_title</a></li>";
         }
-
         ?>
         <li>
+          <?php
+            if( isset($_SESSION['user_role']) && $_SESSION['user_role'] == 'admin'){
+          ?>
           <a href="admin">Admin</a>
+          <?php              
+            }
+          ?>
         </li>
         <!-- <li>
             <a href="#">Services</a>

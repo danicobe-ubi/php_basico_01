@@ -29,11 +29,12 @@
   if($post_user_name == $user_name && $post_user_password == $user_password){
 
     $_SESSION['user_name'] = $user_name;
-    $_SESSION['db_first_name'] = $db_first_name;
+    // $_SESSION['db_first_name'] = $db_first_name;
     $_SESSION['user_firstname'] = $user_firstname;
     $_SESSION['user_lastname'] = $user_lastname;
     $_SESSION['user_role'] = $user_role;
-    header("Location: ../admin");
+    // header("Location: ../admin");
+    header("Location: ../admin/index.php");
   } else {
     header("Location: ../index.php");
   }
